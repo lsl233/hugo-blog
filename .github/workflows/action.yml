@@ -1,31 +1,30 @@
-name: github pages # 名字自取
+name: Github Pages
 
 on:
   push:
     branches:
-      - main  # 这里的意思是当 main分支发生push的时候，运行下面的jobs，这里先改为github-actions
+      - main
 
 jobs:
-  deploy: # 任务名自取
-    runs-on: ubuntu-18.04	# 在什么环境运行任务
+  deploy:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2	# 引用actions/checkout这个action，与所在的github仓库同名
+      - uses: actions/checkout@v2
         with:
-          submodules: false  # Fetch Hugo themes (true OR recursive) 获取submodule主题
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: false
+          fetch-depth: 0
 
-      - name: Setup Hugo	# 步骤名自取
-        uses: peaceiris/actions-hugo@v2	# hugo官方提供的action，用于在任务环境中获取hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'	# 获取最新版本的hugo
-          # extended: true
+          hugo-version: 'latest'
 
-      - name: Build
-        run: hugo --minify	# 使用hugo构建静态网页
+      - name: Build 🏗️
+        run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3	# 一个自动发布github pages的action
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.DEPLOY_TOKEN }} # 另外还支持 github_token 和 personal_token
+          deploy_key: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./public
           publish_branch: pages
