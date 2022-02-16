@@ -1,4 +1,5 @@
-baseurl: https://lsl233.github.io/hugo-blog/
+baseurl: https://lsl233.github.io/
+assetDir: 'hugo-blog'
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
