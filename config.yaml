@@ -28,10 +28,10 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon: /static/favicon.ico
+    favicon: img/favicon.ico
 
     footer:
-        since: 2020
+        since: 2022
         customText:
 
     dateFormat:
