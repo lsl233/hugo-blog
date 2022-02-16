@@ -1,4 +1,4 @@
-name: CI #自动化的名称
+name: Deploy Hugo #自动化的名称
 on:
   push: # push的时候触发
     branches: # 那些分支需要触发
@@ -12,7 +12,7 @@ jobs:
       - name: checkout # 步骤的名称
         uses: actions/checkout@v1 #软件市场的名称
         with: # 参数
-          submodules: true
+          submodules: false
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2.2.2
         with:
@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: hugo -D
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2.5.1
+        uses: peaceiris/actions-gh-pages@v3
         env:
           ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           EXTERNAL_REPOSITORY: redisread/redisread.github.io
