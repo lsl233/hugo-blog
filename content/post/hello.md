@@ -6,5 +6,4 @@ categories:
     - Hello World
 ---
 
-Hello World! 刚刚开始
-
+Hello World! 刚刚开始hello
